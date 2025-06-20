@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping Mall Recognition</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                font-family: 'Segoe UI', sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                text-align: center;
+            }
+            h1 {
+                color: #000000;
+            }
+            p {
+                color: #270362;
+                font-size: 18px;
+                font-family: 'Segoe UI', sans-serif
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Shopping Mall Recognition</h1>
+        <br><p>Upload a mall image below</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="mall_img" required>
+            <br><br>
+            <input type="submit" value="Confirm">
+        </form>
+        {% if prediction %}
+            <h2>The shopping mall: {{ prediction }}</h2>
+        {% endif %}
+        {% if error %}
+            <h2 style="color: red;">{{ error }}</h2>
+        {% endif %}
+    </body>
+</html>
